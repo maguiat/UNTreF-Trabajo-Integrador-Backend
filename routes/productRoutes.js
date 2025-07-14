@@ -7,6 +7,7 @@ const {
     deleteProduct,
     searchProducts,
     searchByCategory,
+    getProductsByPrice,
      } = require("../controllers/productController")
 
 // Rutas
@@ -17,6 +18,7 @@ router.get("/:code", getProductByCode)
 router.post("/", addProduct)
 router.put("/:codigo", updateProduct)
 router.delete("/:codigo", deleteProduct)
+router.get("/precio/:min-:max", getProductsByPrice)
 
 
 module.exports = router

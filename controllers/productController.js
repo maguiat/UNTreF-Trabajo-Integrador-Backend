@@ -72,7 +72,6 @@ const deleteProduct = async (req, res) => {
   }
 }
 
-
 // Buscar un producto por término
 // GET /productos/buscar?q={termino}
 const searchProducts = async (req, res) => {
@@ -111,6 +110,35 @@ const searchByCategory = async (req, res) => {
     }
 }
 
+// Productos en rango de precio 
+// GET /productos/precio/:min-:max
+const getProductsByPrice = async (req, res) => {
+    try {
+        const { min, max } = req.params
+
+        const minPrice = parseFloat(min)
+        const maxPrice = parseFloat(max)
+
+        if (isNaN(minPrice) || isNaN(maxPrice)) {
+            return res.status(400).json({ 
+                error: "Los valores de precio mínimo y máximo deben ser números." 
+            })
+        }
+        const query = {
+            precio: {
+                $gte: minPrice, // Mayor o igual que minPrice
+                $lte: maxPrice  // Menor o igual que maxPrice
+            }
+        }
+        const products = await Product.find(query)
+        res.status(200).json(products)
+
+    } catch (error) {
+        console.error("Error al filtrar por rango de precio:", error)
+        res.status(500).json({ error: "Error interno del servidor" })
+    }
+};
+
 module.exports = {
   getProducts,
   getProductByCode,
@@ -119,4 +147,5 @@ module.exports = {
   deleteProduct,
   searchProducts,
   searchByCategory,
+  getProductsByPrice,
 }
