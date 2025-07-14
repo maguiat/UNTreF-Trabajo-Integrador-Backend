@@ -1,9 +1,5 @@
 # 🛍️ API REST de Productos - Catálogo de api/productos 
 
-[![Node.js](https://img.shields.io/badge/Node.js-18+-green)](https://nodejs.org/)
-[![Express](https://img.shields.io/badge/Express-4.x-blue)](https://expressjs.com/)
-[![MongoDB](https://img.shields.io/badge/MongoDB-7.0-green)](https://www.mongodb.com/)
-
 API RESTful para gestión de catálogo de api/productos, desarrollada como trabajo integrador para el curso de Backend de UNTreF.
 
 ## 📚 Índice 
