@@ -72,6 +72,9 @@ const deleteProduct = async (req, res) => {
   try {
     const codigo = parseInt(req.params.codigo)
     const deletedProduct = await Product.findOneAndDelete({ codigo: codigo })
+    if (!deletedProduct) {
+      return res.status(404).json({ error: "El código del producto no existe." })
+    }
     res.status(200).json({
       message: "Producto eliminado con éxito",
       product: deletedProduct,

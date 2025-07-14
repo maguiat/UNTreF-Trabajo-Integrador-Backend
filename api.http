@@ -74,7 +74,9 @@ Accept: application/json
 DELETE {{api_url}}/productos/101
 Accept: application/json
 
-
+### 5.2 Eliminar un producto inexistente
+DELETE {{api_url}}/productos/99999
+Accept: application/json
 ###
 # --- Endpoints Adicionales ---
 
