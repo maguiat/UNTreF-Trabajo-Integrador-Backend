@@ -73,10 +73,34 @@ const deleteProduct = async (req, res) => {
 }
 
 
+// Buscar un producto por término
+// GET /productos/buscar?q={termino}
+const searchProducts = async (req, res) => {
+  try {
+    const { q } = req.query
+    if (!q) {
+      return res.status(400).json({
+        error:
+          "Se requiere un término de búsqueda. Ejemplo: /productos/buscar?q=notebook",
+      })
+    }
+
+    const regex = new RegExp(q, "i")
+    const products = await Product.find({
+      $or: [{ nombre: { $regex: regex } }, { descripcion: { $regex: regex } }],
+    })
+    res.status(200).json(products)
+  } catch (error) {
+    console.error("Error en la búsqueda de productos:", error)
+    res.status(500).json({ error: "Error interno del servidor" })
+  }
+}
+
 module.exports = {
   getProducts,
   getProductByCode,
   addProduct,
   updateProduct,
   deleteProduct,
+  searchProducts,
 }

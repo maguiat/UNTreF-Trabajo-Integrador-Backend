@@ -5,6 +5,7 @@ const {
     addProduct,
     updateProduct,
     deleteProduct,
+    searchProducts,
      } = require("../controllers/productController")
 
 // Rutas
