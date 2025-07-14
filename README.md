@@ -42,7 +42,7 @@ API RESTful para gestión de catálogo de api/productos, desarrollada como traba
 - [x] Conectar la aplicación a una base de datos de MongoDB.
 - [x] Utilizar un archivo .env para gestionar variables de entorno.
 - [x] Crear un Schema de Mongoose que se corresponda con la estructura de datos.
-- [ ] Implementar una lógica para poblar la base de datos una única vez.
+- [x] Implementar una lógica para poblar la base de datos una única vez.
 - [x] Implementar los endpoints del CRUD Básico.
 - [x] Implementar los 4 endpoints adicionales de filtrado y búsqueda.
 - [x] Incluir el archivo api.http para facilitar las pruebas.
