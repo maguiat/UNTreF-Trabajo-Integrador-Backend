@@ -160,7 +160,7 @@ Para probar los endpoints de forma sencilla, puedes usar la extensión REST Clie
 ```json
 {
   "express": "^5.1.0",
-  "mongoose": "^8.16.0"
+  "mongoose": "^8.16.3"
 }
 ```
 
