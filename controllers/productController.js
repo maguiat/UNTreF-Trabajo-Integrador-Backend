@@ -18,7 +18,13 @@ const getProductByCode = async (req, res) => {
   try {
     const intCode = parseInt(code) // convertimos a entero
     const product = await Product.findOne({ codigo: intCode })
-    res.status(200).json(product)
+
+    if (!product) {
+      res.status(404).json({ error: "Producto no encontrado" })
+    } else {
+      res.status(200).json(product)
+    }
+    
   } catch (error) {
     res.status(500).json({ error: "Error al obtener producto" })
   }
