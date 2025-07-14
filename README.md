@@ -83,7 +83,7 @@ cd "TP integrador - Backend"
 
 ### 2. Instalar dependencias
 > [!TIP]  
-> Este proyecto utiliza pnpm, si no lo tienes instalado, puedes instalarlo con `npm install -g pnpm`.
+> Este proyecto utiliza **pnpm**, si no lo tienes instalado, puedes instalarlo con `npm install -g pnpm`.
 ```bash
 # Usando pnpm (recomendado)
 pnpm install
@@ -96,8 +96,9 @@ npm install
 Crea un archivo `.env` en la raíz del proyecto:
 ```env
 MONGODB_URI = 'mongodb+srv://<user>:<password>@<cluster-url>/<database-name>?retryWrites=true&w=majority'
-PORT = 
+PORT =
 ```
+La aplicación se ejecuta por defecto en el puerto **3000**.
 
 ### 4. Iniciar la aplicación
 ```bash
