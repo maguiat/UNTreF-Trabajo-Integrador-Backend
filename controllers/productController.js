@@ -1,5 +1,8 @@
 const { Product } = require("../models/product")
 
+// Controladores
+
+// Devuelve todos los productos
 const getProducts = async (req, res) => {
     try {
         const products = await Product.find()
@@ -9,6 +12,7 @@ const getProducts = async (req, res) => {
     }
 }
 
+// Devuelve un producto por su código
 const getProductByCode = async (req, res) => {
     const { code } = req.params
     try {
@@ -20,9 +24,22 @@ const getProductByCode = async (req, res) => {
     }
 }
 
+// Agrega un nuevo producto al catálogo
+const addProduct = async (req, res) => {
+    const newProduct = new Product(req.body)
+    try {
+        const savedProduct = await newProduct.save()
+        res.status(201).json({ message: "Producto agregado con éxito", product: savedProduct })
 
+    } catch (error) {
+        res.status(400).json({ 
+            error: "No se pudo agregar el producto. El cuerpo de la solicitud es inválido o el código ya existe." 
+        })
+    }
+}
 
 module.exports = { 
     getProducts,
-    getProductByCode
+    getProductByCode,
+    addProduct,
  }
