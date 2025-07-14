@@ -22,7 +22,8 @@ Accept: application/json
 
 ### 2. Obtener un producto por su código
 # Reemplaza '1' con un código de producto que exista en tu base de datos.
-GET {{api_url}}/productos/1
+# Reemplazamos con '8135', que en la db es Vestido floral 👗🌸
+GET {{api_url}}/productos/8135
 Accept: application/json
 
 ### 2.1 Obtener un producto con un código inexistente (debería dar 404)
@@ -37,24 +38,32 @@ Content-Type: application/json
 
 {
     "codigo": 101,
-    "nombre": "Teclado Luminoso RGB",
+    "nombre": "Pantalón Oxford",
     "precio": 65.50,
-    "categoria": ["Accesorios", "Computación", "Gaming"]
+    "categoria": ["Jeans", "Ropa", "Pantalones"]
 }
 
 ### 4. Modificar un producto existente
 # Reemplaza '1' con un código de producto que exista.
 # Solo se necesita enviar los campos a modificar.
-PUT {{api_url}}/productos/1
+# '2415' es el código de Remera Algodón
+PUT {{api_url}}/productos/2415
 Content-Type: application/json
 
 {
-    "precio": 950.00
+    "precio": 19.99
 }
 
 ### 5. Eliminar un producto
 # Reemplaza '2' con un código de producto que desees eliminar.
-DELETE {{api_url}}/productos/2
+# '8642' es el código de Blusa Asimétrica, la elimino porque no me gusta.
+DELETE {{api_url}}/productos/8642
+Accept: application/json
+
+### 5.1 Eliminar un producto
+# Otra para Eliminar -> Agregar -> Eliminar
+# '101' es el código del Pantalón oxford que agregamos más arriba.
+DELETE {{api_url}}/productos/101
 Accept: application/json
 
 
@@ -62,18 +71,23 @@ Accept: application/json
 # --- Endpoints Adicionales ---
 
 ### 6. Buscar productos por término
-# Busca productos que contengan 'Laptop' en su nombre.
-GET {{api_url}}/productos/buscar?q=Laptop
+# Busca productos que contengan 'Pantalón' en su nombre.
+GET {{api_url}}/productos/buscar?q=Pantalón
+Accept: application/json
+
+### 6.1 Buscar productos por término
+# Busca productos que contengan 'vest' en su nombre.
+GET {{api_url}}/productos/buscar?q=vest
 Accept: application/json
 
 ### 7. Filtrar productos por categoría
-# Busca productos que pertenezcan a la categoría 'Accesorios'.
-GET {{api_url}}/productos/categoria/Accesorios
+# Busca productos que pertenezcan a la categoría 'Blusas'.
+GET {{api_url}}/productos/categoria/Blusas
 Accept: application/json
 
 ### 8. Filtrar productos por rango de precio
-# Busca productos con precios entre 100 y 500.
-GET {{api_url}}/productos/precio/100-500
+# Busca productos con precios entre 0 y 100.
+GET {{api_url}}/productos/precio/0-100
 Accept: application/json
 
 ### 9. Carga masiva de productos
@@ -84,14 +98,14 @@ Content-Type: application/json
 [
     {
         "codigo": 201,
-        "nombre": "Monitor Gamer 27 pulgadas",
-        "precio": 399.99,
-        "categoria": ["Monitores", "Computación", "Gaming"]
+        "nombre": "Falda-short",
+        "precio": 39.99,
+        "categoria": ["Pantalones", "Faldas", "Ropa"]
     },
     {
         "codigo": 202,
-        "nombre": "Silla Gamer Ergonómica",
-        "precio": 249.50,
-        "categoria": ["Mobiliario", "Gaming"]
+        "nombre": "Remera estampada",
+        "precio": 29.50,
+        "categoria": ["Remeras", "Ropa"]
     }
 ]
