@@ -96,6 +96,21 @@ const searchProducts = async (req, res) => {
   }
 }
 
+// Buscar productos por categoría
+// GET /productos/categoria/:nombre
+const searchByCategory = async (req, res) => {
+    try {
+        const { nombre } = req.params
+        const categoryRegex = new RegExp(`^${nombre}$`, 'i')
+        const products = await Product.find({ categoria: categoryRegex })
+        res.status(200).json(products)
+
+    } catch (error) {
+        console.error("Error al filtrar por categoría:", error)
+        res.status(500).json({ error: "Error interno del servidor" })
+    }
+}
+
 module.exports = {
   getProducts,
   getProductByCode,
@@ -103,4 +118,5 @@ module.exports = {
   updateProduct,
   deleteProduct,
   searchProducts,
+  searchByCategory,
 }
