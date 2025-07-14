@@ -137,8 +137,30 @@ const getProductsByPrice = async (req, res) => {
         console.error("Error al filtrar por rango de precio:", error)
         res.status(500).json({ error: "Error interno del servidor" })
     }
-};
+}
 
+// POST /productos/masivo
+const postProductsMasivo = async (req, res) => {
+    const productsToAdd = req.body
+    if (!Array.isArray(productsToAdd) || productsToAdd.length === 0) {
+        return res.status(400).json({
+            error: "El cuerpo de la solicitud debe ser un array de productos."
+        })
+    }
+    try {
+        const createdProducts = await Product.insertMany(productsToAdd)
+        res.status(201).json({
+            message: "Todos los productos fueron agregados con éxito.",
+            productosAgregados: createdProducts
+        })
+
+    } catch (error) {
+        console.error("Error en carga masiva:", error) 
+        res.status(400).json({
+            error: "No se pudieron agregar los productos. Revisa que todos los datos sean válidos y que los códigos no estén duplicados."
+        })
+    }
+}
 module.exports = {
   getProducts,
   getProductByCode,
@@ -148,4 +170,5 @@ module.exports = {
   searchProducts,
   searchByCategory,
   getProductsByPrice,
+  postProductsMasivo
 }

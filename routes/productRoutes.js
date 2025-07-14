@@ -8,6 +8,7 @@ const {
     searchProducts,
     searchByCategory,
     getProductsByPrice,
+    postProductsMasivo
      } = require("../controllers/productController")
 
 // Rutas
@@ -19,6 +20,7 @@ router.post("/", addProduct)
 router.put("/:codigo", updateProduct)
 router.delete("/:codigo", deleteProduct)
 router.get("/precio/:min-:max", getProductsByPrice)
+router.post("/masivo", postProductsMasivo)
 
 
 module.exports = router
