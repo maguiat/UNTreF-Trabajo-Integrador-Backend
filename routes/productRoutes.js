@@ -15,7 +15,7 @@ const {
 router.get("/", getProducts)
 router.get("/buscar", searchProducts)
 router.get("/categoria/:nombre", searchByCategory)
-router.get("/:code", getProductByCode)
+router.get("/:codigo", getProductByCode)
 router.post("/", addProduct)
 router.put("/:codigo", updateProduct)
 router.delete("/:codigo", deleteProduct)
