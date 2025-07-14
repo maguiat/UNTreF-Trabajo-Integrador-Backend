@@ -13,6 +13,7 @@ app.use(express.json())
 // Rutas
 app.use("/api/productos", productRoutes)
 
+
 // Servidor
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`)

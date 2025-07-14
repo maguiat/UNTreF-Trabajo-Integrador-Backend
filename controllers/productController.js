@@ -9,7 +9,20 @@ const getProducts = async (req, res) => {
     }
 }
 
+const getProductByCode = async (req, res) => {
+    const { code } = req.params
+    try {
+        const intCode = parseInt(code) // convertimos a entero
+        const product = await Product.findOne({ codigo: intCode })
+        res.status(200).json(product)
+    } catch (error) {
+        res.status(500).json({ error: "Error al obtener producto" })
+    }
+}
+
+
 
 module.exports = { 
-    getProducts
+    getProducts,
+    getProductByCode
  }
