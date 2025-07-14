@@ -54,6 +54,14 @@ Content-Type: application/json
     "precio": 19.99
 }
 
+### 4.1. Modificar un producto inexistente
+PUT {{api_url}}/productos/99999
+Content-Type: application/json
+
+{
+    "precio": 19.99
+}
+
 ### 5. Eliminar un producto
 # Reemplaza '2' con un código de producto que desees eliminar.
 # '8642' es el código de Blusa Asimétrica, la elimino porque no me gusta.

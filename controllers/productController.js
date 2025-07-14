@@ -55,6 +55,9 @@ const updateProduct = async (req, res) => {
       req.body,
       { new: true }
     )
+    if (!updatedProduct) {
+      return res.status(404).json({ error: "El código del producto no existe." })
+    } 
     res.status(200).json({
       message: "Producto actualizado con éxito",
       product: updatedProduct,
