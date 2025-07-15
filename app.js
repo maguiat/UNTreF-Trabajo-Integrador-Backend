@@ -1,4 +1,4 @@
-// app.js
+// Programa principal
 
 const express = require("express")
 const app = express()
@@ -8,11 +8,11 @@ const { connectDB } = require("./config/database")
 
 connectDB()
 
+// Middleware
 app.use(express.json())
 
 // Rutas
 app.use("/api/productos", productRoutes)
-
 
 // Servidor
 app.listen(PORT, () => {

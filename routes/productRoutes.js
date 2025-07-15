@@ -1,3 +1,5 @@
+// Rutas de la API de productos de las prendas
+
 const router = require("express").Router()
 const { 
     getProducts, 

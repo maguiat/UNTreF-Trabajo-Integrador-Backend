@@ -22,7 +22,6 @@ const getProductByCode = async (req, res) => {
     if (!product) {
       return res.status(404).json({ error: "Producto no encontrado" })
     }
-    
     res.status(200).json(product)
     
   } catch (error) {
@@ -95,11 +94,7 @@ const searchProducts = async (req, res) => {
           "Se requiere un término de búsqueda. Ejemplo: /productos/buscar?q=notebook",
       })
     }
-
-    const regex = new RegExp(q, "i")
-    const products = await Product.find({
-      $or: [{ nombre: { $regex: regex } }, { descripcion: { $regex: regex } }],
-    })
+    const products = await Product.find({ nombre: { $regex: new RegExp(q, 'i') } })
     res.status(200).json(products)
   } catch (error) {
     console.error("Error en la búsqueda de productos:", error)

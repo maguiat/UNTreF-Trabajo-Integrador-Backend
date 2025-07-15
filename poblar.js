@@ -1,3 +1,5 @@
+// Poblar la base de datos con el JSON
+
 const mongoose = require('mongoose')
 const { Product } = require('./models/product.js')
 const productsData = require('./data/prendas.json')
@@ -23,7 +25,7 @@ const poblarDB = async () => {
         console.log("¡Base de datos poblada con éxito! ✅")
 
     } catch (error) {
-        console.error("Error durante el seeding de la base de datos:", error)
+        console.error("Error al poblar la base de datos:", error)
     } finally {
         // Desconección de la base de datos
         await mongoose.disconnect()

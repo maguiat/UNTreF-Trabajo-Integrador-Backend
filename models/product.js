@@ -7,6 +7,6 @@ const PrendaSchema = new mongoose.Schema({
     categoria: [{ type: String, required: true }],
 })
 
-const Product = mongoose.model("Product", PrendaSchema, 'prendas')
+const Product = mongoose.model("Product", PrendaSchema, 'prendas') // 'prendas' es el nombre de la colección en MongoDB
 
 module.exports = { Product }
